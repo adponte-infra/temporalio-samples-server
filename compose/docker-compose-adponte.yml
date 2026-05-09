@@ -72,8 +72,13 @@ services:
       - temporal-network
     volumes:
       - ./scripts:/scripts
-    entrypoint: ["/bin/sh", "-c"]
-    command: "chmod +x /scripts/setup-postgres-opensearch.sh && /scripts/setup-postgres-opensearch.sh"
+    entrypoint:
+      - /bin/sh
+      - -c
+    command:
+      - |
+        chmod +x /scripts/setup-postgres-opensearch.sh
+        /scripts/setup-postgres-opensearch.sh
 
   temporal:
     image: temporalio/server:${TEMPORAL_VERSION}
@@ -119,8 +124,13 @@ services:
       - temporal-network
     volumes:
       - ./scripts:/scripts
-    entrypoint: ["/bin/sh", "-c"]
-    command: "chmod +x /scripts/create-namesp.sh && /scripts/create-namesp.sh"
+    entrypoint:
+      - /bin/sh
+      - -c
+    command:
+      - |
+        chmod +x /scripts/create-namespace.sh
+        /scripts/create-namespace.sh
 
   temporal-ui:
     container_name: temporal-ui
