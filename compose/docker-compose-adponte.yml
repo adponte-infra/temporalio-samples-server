@@ -32,7 +32,11 @@ services:
       - cluster.routing.allocation.disk.watermark.high=256mb
       - cluster.routing.allocation.disk.watermark.flood_stage=128mb
       - plugins.security.disabled=true
+      - DISABLE_INSTALL_DEMO_CONFIG=true
     ulimits:
+      memlock:
+        soft: -1
+        hard: -1
       nofile:
         soft: 65536
         hard: 65536
@@ -140,3 +144,6 @@ networks:
   temporal-network:
     external: true
     name: temporal-network
+
+volumes:
+  opensearch-data:
