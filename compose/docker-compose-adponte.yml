@@ -137,9 +137,12 @@ services:
     image: temporalio/ui:${TEMPORAL_UI_VERSION}
     networks:
       - temporal-network
-    ports:
-      - 8080:8080
-
+    labels:
+      - traefik.enable=true
+      - 'traefik.http.routers.temporal-ui.rule=Host(`temporal.adponte.com`)'
+      - 'traefik.http.routers.temporal-ui.entrypoints=http,https'
+      - traefik.http.routers.temporal-ui.tls=true
+      - traefik.http.services.temporal-ui.loadbalancer.server.port=8080
 networks:
   temporal-network:
     external: true
