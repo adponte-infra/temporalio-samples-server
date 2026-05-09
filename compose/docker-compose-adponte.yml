@@ -137,5 +137,5 @@ services:
 
 networks:
   temporal-network:
-    driver: bridge
+    external: true
     name: temporal-network
