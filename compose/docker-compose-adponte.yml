@@ -1,6 +1,6 @@
 services:
   postgresql:
-    image: postgres:${POSTGRESQL_VERSION}
+    image: pgvector/pgvector:${POSTGRESQL_VERSION}
     container_name: temporal-postgresql
     ports:
       - "5432:5432"
