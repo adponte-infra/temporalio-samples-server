@@ -43,7 +43,7 @@ services:
     networks:
       - temporal-network
     volumes:
-      - /usr/share/opensearch/data
+      - opensearch-data:/usr/share/opensearch/data
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=1s || exit 1"]
       interval: 5s
